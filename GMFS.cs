@@ -61,7 +61,7 @@
 					if (beacon.CustomName != null && beacon.CustomName.Substring(0, CustomNameKeyEMFS.Length).ToLower() == CustomNameKeyEMFS.ToLower())
 					{
 						var pos = beacon.CubeGrid.GridIntegerToWorld(beacon.Position);
-                        double orig = ((Border) - (Math.Sqrt(Math.Pow(pos.X,2) + Math.Pow(pos.Y,2) + Math.Pow(pos.Z,2)))) / 1000;
+                                                double orig = ((Border) - (Math.Sqrt(Math.Pow(pos.X,2) + Math.Pow(pos.Y,2) + Math.Pow(pos.Z,2)))) / 1000;
 						beacon.SetCustomName(string.Format("{0} [Dist:{1:N1} km]", CustomNameKeyEMFS, orig));
 					}
 				}
