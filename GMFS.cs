@@ -10,7 +10,7 @@
     /// Adds logic to the Cockpit cube, allowing the Cockpit to broadcast world border proximity (caveat: in a sphere) information in the sector.
     /// requires an Antenna to broadcast.
     /// 
-    /// The "gamey" explanation is this allows the Cockpit instruments to measure the natural Gravemetric field
+    /// The "gamey" explanation is this allows the Cockpit instruments to measure the natural Gravimetric field
     /// that the asteroids emit so you can be wary of when you are approaching dangerous levels of cosmic radiation.
     /// 
     /// Author: Tostito
