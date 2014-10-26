@@ -30,7 +30,7 @@
         private const string CustomNameKeyEMFS = "Grav Field:";
         //i dont know how to use the worldsizekm to return the number it is set to.
         //private Int32 Border = Sandbox.ModAPI.MyAPIGateway.Utilities.ConfigDedicated.SessionSettings.WorldSizeKm;
-        private int Border = (30000);  //change this to fit your world border
+        private int Border = (30000);  //change this to fit your world border ( world size divided by 2)
         public override void Close()
         {
         }
