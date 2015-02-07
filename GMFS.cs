@@ -27,10 +27,9 @@
     public class EMFSLogic : MyGameLogicComponent
     {
         
-        private const string CustomNameKeyEMFS = "Grav Field:";
-        //i dont know how to use the worldsizekm to return the number it is set to.
-        //private Int32 Border = Sandbox.ModAPI.MyAPIGateway.Utilities.ConfigDedicated.SessionSettings.WorldSizeKm;
-        private int Border = (30000);  //change this to fit your world border ( world size divided by 2)
+        private const string CustomNameKeyEMFS = "Border:";
+        private readonly static int Border = (Sandbox.ModAPI.MyAPIGateway.Session.GetWorld().Checkpoint.Settings.WorldSizeKm * 1000) / 2;
+        
         public override void Close()
         {
         }
@@ -54,14 +53,15 @@
 		{
 			try
 			{
-				var beacon = (Sandbox.ModAPI.Ingame.IMyTerminalBlock)Entity;
+				var beacon = (Sandbox.ModAPI.IMyTerminalBlock)Entity;
+                var grid = (Sandbox.ModAPI.IMyCubeGrid)beacon.CubeGrid;
 				
 				if (beacon.CustomName.Length >= CustomNameKeyEMFS.Length)
 				{
 					if (beacon.CustomName != null && beacon.CustomName.Substring(0, CustomNameKeyEMFS.Length).ToLower() == CustomNameKeyEMFS.ToLower())
 					{
-						var pos = beacon.CubeGrid.GridIntegerToWorld(beacon.Position);
-                                                double orig = ((Border) - (Math.Sqrt(Math.Pow(pos.X,2) + Math.Pow(pos.Y,2) + Math.Pow(pos.Z,2)))) / 1000;
+                        var pos = grid.GridIntegerToWorld(beacon.Position);
+                        double orig = ((Border) - (Math.Sqrt(Math.Pow(pos.X,2) + Math.Pow(pos.Y,2) + Math.Pow(pos.Z,2)))) / 1000;
 						beacon.SetCustomName(string.Format("{0} [Dist:{1:N1} km]", CustomNameKeyEMFS, orig));
 					}
 				}
